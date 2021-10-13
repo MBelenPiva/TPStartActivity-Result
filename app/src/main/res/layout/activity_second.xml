@@ -9,22 +9,22 @@
 
 
     <TextView
-        android:id="@+id/text_view_numbers"
+        android:id="@+id/tvNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Numbers: "
+        android:text="Nombre"
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/button_add"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnAceptar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="add" />
+        android:text="ACEPTAR" />
 
     <Button
-        android:id="@+id/button_subtract"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnCancelar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="subtract" />
+        android:text="CANCELAR" />
 
 </LinearLayout>
