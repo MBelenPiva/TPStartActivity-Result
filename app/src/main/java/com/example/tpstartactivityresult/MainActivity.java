@@ -3,6 +3,7 @@ package com.example.tpstartactivityresult;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnAbrirActivity, btnAbrirContactos, btnAbrirCamara;
     ImageView ivImagen;
     TextView tvOutPut;
+
+    private static_int PICK_CONTACT = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,26 +53,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SetearListeners() {
+
         btnAbrirCamara.setOnClickListener(btnAbrirCamara_Click);
         btnAbrirContactos.setOnClickListener(btnAbrirContactos_Click);
     }
 
+
     private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
         @Override
-    
+        public void onClick(View view) {
+            // ir a acercaDeFragment
+        }
     };
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                int result = data.getIntExtra("resultado", 0);
-                mTextViewResult.setText("" + result);
-            }
-            if (resultCode == RESULT_CANCELED) {
-                mTextViewResult.setText("Nada seleccionado");
-            }
+    
+    private View.OnClickListener btnAbrirContactos_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts);
+            i setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+            startActivityForResult(i,PICK_CONTACT);
         }
-    }
+    };
+
 }
