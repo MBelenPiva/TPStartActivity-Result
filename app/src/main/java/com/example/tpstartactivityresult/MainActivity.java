@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     int number1 = Integer.parseInt(mEditTextNumber1.getText().toString());
                     int number2 = Integer.parseInt(mEditTextNumber2.getText().toString());
-                    Intent intent = new Intent(MainActivity.this, Activity2.class);
+                    Intent intent = new Intent(MainActivity.this, secondActivity.class);
                     intent.putExtra("number1", number1);
                     intent.putExtra("number2", number2);
                     startActivityForResult(intent, 1);
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                int result = data.getIntExtra("result", 0);
+                int result = data.getIntExtra("resultado", 0);
                 mTextViewResult.setText("" + result);
             }
             if (resultCode == RESULT_CANCELED) {
-                mTextViewResult.setText("Nothing selected");
+                mTextViewResult.setText("Nada seleccionado");
             }
         }
     }
