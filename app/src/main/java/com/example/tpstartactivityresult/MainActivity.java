@@ -5,42 +5,59 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.os.Bundle;
-
 public class MainActivity extends AppCompatActivity {
-    private TextView mTextViewResult;
-    private EditText mEditTextNumber1;
-    private EditText mEditTextNumber2;
+    Button btnAbrirActivity, btnAbrirContactos, btnAbrirCamara;
+    ImageView ivImagen;
+    TextView tvOutPut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTextViewResult = findViewById(R.id.text_view_result);
-        mEditTextNumber1 = findViewById(R.id.edit_text_number1);
-        mEditTextNumber2 = findViewById(R.id.edit_text_number2);
-        Button buttonOpenActivity2 = findViewById(R.id.button_open_activity2);
-        buttonOpenActivity2.setOnClickListener(new View.OnClickListener() {
+
+        ObtenerReferencias();
+
+        SetearListeners();
+
+
+        Button btnActivity2 = findViewById(R.id.btnAbrirActivity);
+
+        btnActivity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mEditTextNumber1.getText().toString().equals("")
-                        || mEditTextNumber2.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "Please insert numbers", Toast.LENGTH_SHORT).show();
-                } else {
-                    int number1 = Integer.parseInt(mEditTextNumber1.getText().toString());
-                    int number2 = Integer.parseInt(mEditTextNumber2.getText().toString());
+                if (btnAbrirActivity) {
                     Intent intent = new Intent(MainActivity.this, secondActivity.class);
-                    intent.putExtra("number1", number1);
-                    intent.putExtra("number2", number2);
                     startActivityForResult(intent, 1);
+                } else {
+
                 }
             }
         });
     }
+
+
+    private void ObtenerReferencias() {
+        btnAbrirActivity = findViewById(R.id.btnAbrirActivity);
+        btnAbrirCamara = (Button)findViewById(R.id.btnAbrirCamara);
+        btnAbrirContactos = (Button)findViewById(R.id.btnAbrirContactos);
+        ivImagen = (ImageView)findViewById(R.id.ivImagen);
+        tvOutPut = (TextView)findViewById(R.id.tvOutPut);
+    }
+
+    private void SetearListeners() {
+        btnAbrirCamara.setOnClickListener(btnAbrirCamara_Click);
+        btnAbrirContactos.setOnClickListener(btnAbrirContactos_Click);
+    }
+
+    private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
+        @Override
+    
+    };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
