@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static int PICK_CONTACT = 15;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ObtenerReferencias();
 
         SetearListeners();
+
 
 
     //    Button btnActivity2 = findViewById(R.id.btnAbrirActivity);
@@ -82,14 +84,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
-
+            final int REQUEST_TAKE_PHOTO = 1;
         }
     };
 
+    
     private View.OnClickListener btnAbrirContactos_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
