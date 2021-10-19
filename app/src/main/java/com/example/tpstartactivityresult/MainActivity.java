@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivImagen;
     TextView tvOutPut;
 
-    private static_int PICK_CONTACT = 15;
+    private static int PICK_CONTACT = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +28,19 @@ public class MainActivity extends AppCompatActivity {
         SetearListeners();
 
 
-        Button btnActivity2 = findViewById(R.id.btnAbrirActivity);
+    //    Button btnActivity2 = findViewById(R.id.btnAbrirActivity);
 
-        btnActivity2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (btnAbrirActivity) {
-                    Intent intent = new Intent(MainActivity.this, secondActivity.class);
-                    startActivityForResult(intent, 1);
-                } else {
+     //   btnActivity2.setOnClickListener(new View.OnClickListener() {
+       //     @Override
+         //   public void onClick(View v) {
+           //     if (btnAbrirActivity) {
+             //       Intent intent = new Intent(MainActivity.this, secondActivity.class);
+               //     startActivityForResult(intent, 1);
+                //} else {
 
-                }
-            }
-        });
+                //}
+            //}
+        //});
     }
 
 
@@ -59,19 +59,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
+    private View.OnClickListener btnAbrirActivity_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            // ir a acercaDeFragment
+            Intent intent=new Intent(MainActivity.this,secondActivity.class);
+            startActivityForResult(intent, 2);
+
         }
     };
 
-    
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==2)
+        {
+            String message=data.getStringExtra("MESSAGE");
+            tvOutPut.setText(message);
+        }
+    }
+
+
+    private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+
+        }
+    };
+
     private View.OnClickListener btnAbrirContactos_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts);
-            i setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+            Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+            Bundle datos = new Bundle();
             startActivityForResult(i,PICK_CONTACT);
         }
     };

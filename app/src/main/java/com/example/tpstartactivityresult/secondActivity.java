@@ -20,7 +20,10 @@ public class secondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         setTitle("Activity 2");
 
+
         ObtenerReferencias();
+
+        SetearListeners();
 
     }
 
@@ -29,4 +32,33 @@ public class secondActivity extends AppCompatActivity {
         btnAceptar = findViewById(R.id.btnAceptar);
         btnCancelar = findViewById(R.id.btnCancelar);
     }
+
+    private void SetearListeners() {
+        btnCancelar.setOnClickListener(btnCancelar_Click);
+        btnAceptar.setOnClickListener(btnAceptar_Click);
+    }
+
+    private View.OnClickListener btnCancelar_Click = new View.OnClickListener() {
+    @Override
+    public void onClick(View arg0) {
+        String message=tvNombre.getText().toString();
+        Intent intent=new Intent();
+        intent.putExtra("MESSAGE",message);
+        setResult(2,intent);
+        finish();//finalizar activity
+    }
+    };
+
+    private View.OnClickListener btnAceptar_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View arg0) {
+            String message=tvNombre.getText().toString();
+            Intent intent=new Intent();
+            intent.putExtra("MESSAGE",message);
+            setResult(2,intent);
+            finish();//finalizar activity
+        }
+    };
+
 }
+
