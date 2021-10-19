@@ -54,7 +54,7 @@ public class secondActivity extends AppCompatActivity {
         public void onClick(View arg0) {
             String message=tvNombre.getText().toString();
             Intent intent=new Intent();
-            intent.putExtra("MESSAGE",message);
+            intent.putExtra("Angi",message);
             setResult(2,intent);
             finish();//finalizar activity
         }

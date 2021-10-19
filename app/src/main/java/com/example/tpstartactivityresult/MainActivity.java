@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         SetearListeners();
 
-
-
     //    Button btnActivity2 = findViewById(R.id.btnAbrirActivity);
 
      //   btnActivity2.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode==2)
         {
-            String message=data.getStringExtra("MESSAGE");
+            String message=data.getStringExtra("Angi");
             tvOutPut.setText(message);
         }
     }
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    
+
     private View.OnClickListener btnAbrirContactos_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
