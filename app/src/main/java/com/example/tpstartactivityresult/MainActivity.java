@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvOutPut;
 
     private static int PICK_CONTACT = 15;
+    public static int CODE_FOTO = 1;
 
 
     @Override
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(MainActivity.this,secondActivity.class);
+            Bundle datos = new Bundle();
             startActivityForResult(intent, 2);
 
         }
@@ -86,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener btnAbrirCamara_Click = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            final int REQUEST_TAKE_PHOTO = 1;
+            Intent intent = new Intent ("android.media.action.IMAGE_CAPTURE");
+            startActivityForResult(intent, CODE_FOTO);
         }
     };
 
